@@ -38,8 +38,8 @@ do
     bool = function(self, value)
       return self:u8(value and 1 or 0)
     end,
-    string = function(self, value)
-      local length = #value
+    string = function(self, value, length)
+      length = length or #value
       return self:vu32(length):raw(value, length)
     end,
     u8 = function(self, value)
