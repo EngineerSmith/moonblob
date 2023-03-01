@@ -244,6 +244,11 @@ do
     tostring = function(self)
       return ffi.string(self._data, self._length)
     end,
+    tobytedata = function(self)
+      local bd = love.data.newByteData(self._length)
+      ffi.copy(bd:getPointer(), self._data, self._length)
+      return bd
+    end,
     length = function(self)
       return self._length
     end,
